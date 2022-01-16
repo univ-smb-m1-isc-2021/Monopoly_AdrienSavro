@@ -60,7 +60,7 @@ public class Joueur {
 			// R.
 		}
 
-		this.f.refreshFrame();
+		// // this.f.refreshFrame();
 
 		
 	}
@@ -134,7 +134,7 @@ public class Joueur {
 			this.argent = this.argent + montant;
 		}
 		
-		this.f.refreshFrame();
+		//// this.f.refreshFrame();
 	}
 	
 	public void ajoutePropriete(CaseAchetable c) {
