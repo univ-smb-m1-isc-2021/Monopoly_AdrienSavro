@@ -15,8 +15,8 @@ class CaseProprieteTest {
 	Monopoly jeu = new Monopoly();
 	Case depart = Main.creerCase(jeu);
 	
-	CasePropriete marron1 = new CasePropriete("Boulevard de Belleville", 60, 2, 10, 30, 90, 160, 250);
-	CasePropriete marron2 = new CasePropriete("Rue Lecourbe", 60, 4, 20, 60, 180, 320, 450);
+	CasePropriete marron1 = (CasePropriete)jeu.getCases().get(1);
+	CasePropriete marron2 = (CasePropriete)jeu.getCases().get(2);
 	
 	Joueur tom = new Joueur("Tom", marron1, null); // L'argent de Tom est initialisé à 5000 €
 	
@@ -28,11 +28,35 @@ class CaseProprieteTest {
 		
 	}
 	
+	@Test
+	void testEstProprietaire() {
+		marron1.setProprietaire(tom);
+		boolean test = marron1.estProprietaire(tom);
+		
+		assertTrue(test);
+	}
 	
+	@Test
+	void testAjouterMaison() {
+		marron1.setProprietaire(tom);
+		tom.ajoutePropriete(marron1);
+		marron2.setProprietaire(tom);
+		tom.ajoutePropriete(marron2);
+		tom.setArgent(20);
+		boolean test = marron1.ajouterMaison(1);
+		
+		assertTrue(!test);
+	}
 	
-	
-	
-	
-
-
+	@Test
+	void testAjouterMaisonVrai() {
+		marron1.setProprietaire(tom);
+		tom.ajoutePropriete(marron1);
+		marron2.setProprietaire(tom);
+		tom.ajoutePropriete(marron2);
+		tom.setArgent(2000);
+		boolean test = marron1.ajouterMaison(1);
+		
+		assertTrue(test);
+	}
 }
