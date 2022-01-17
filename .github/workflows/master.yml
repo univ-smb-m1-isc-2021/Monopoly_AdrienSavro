@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Java CI with Maven
+name: Maven Build & Sonar analysis
 
 on:
   push:
@@ -22,5 +22,8 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package
+    - name: Maven Build & Sonar analysis
+      run: mvn -B package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
