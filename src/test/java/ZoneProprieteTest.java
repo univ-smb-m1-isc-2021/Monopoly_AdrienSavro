@@ -4,53 +4,35 @@ import org.junit.jupiter.api.Test;
 
 import tp.Case;
 import tp.CasePropriete;
-import tp.EtatAchete;
-import tp.EtatLibre;
 import tp.Joueur;
 import tp.Main;
 import tp.Monopoly;
+import tp.ZonePropriete;
 
-class CaseProprieteTest {
-	
+class ZoneProprieteTest {
+
 	Monopoly jeu = new Monopoly();
 	Case depart = Main.creerCase(jeu);
 	
 	CasePropriete marron1 = (CasePropriete)jeu.getCases().get(1);
 	CasePropriete marron2 = (CasePropriete)jeu.getCases().get(2);
+	ZonePropriete marron = marron1.getQuartier();
 	
 	Joueur tom = new Joueur("Tom", marron1, null); // L'argent de Tom est initialisé à 5000 €
 	
 	@Test
-	void testDonneLoyerConstructible() {
-		// Pas besoin de la tester
-		assertTrue(true);
-		
-	}
-	
-	@Test
-	void testEstProprietaire() {
+	void testBoucleSurQuartierFalse() {
 		marron1.setProprietaire(tom);
-		boolean test = marron1.estProprietaire(tom);
-		
-		assertTrue(test);
-	}
-	
-	@Test
-	void testAjouterMaison() {
-		marron1.setProprietaire(tom);
-		tom.ajoutePropriete(marron1);
-		tom.setArgent(20);
-		boolean test = marron1.ajouterMaison(1);
+		boolean test = marron.boucleSurQuartier(tom);
 		
 		assertTrue(!test);
 	}
-	
+
 	@Test
-	void testAjouterMaisonVrai() {
+	void testBoucleSurQuartierTrue() {
 		marron1.setProprietaire(tom);
-		tom.ajoutePropriete(marron1);
-		tom.setArgent(2000);
-		boolean test = marron1.ajouterMaison(1);
+		marron2.setProprietaire(tom);
+		boolean test = marron.boucleSurQuartier(tom);
 		
 		assertTrue(test);
 	}
