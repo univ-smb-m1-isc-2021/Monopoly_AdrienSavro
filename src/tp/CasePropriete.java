@@ -53,18 +53,30 @@ public class CasePropriete extends CaseAchetable {
 		return false;
 	}
 	
-	public void ajouterMaison(int nombre) {
+	public boolean ajouterMaison(int nombre) {
 		int prix = this.quartier.getPrixAchatMaison();
-		this.getProprietaire().paye(prix, true);
+		Joueur proprio = this.getProprietaire();
 		
-		this.nombreMaison += nombre;
-		
-		if(this.nombreMaison == 5) {
-			EtatIbis ei = new EtatIbis(this);
-			this.majEtat(ei);
+		// Uniquement si le propriétaire a assez d'argent pour acheter une maison
+		if (proprio.getArgent() >= prix) {
+			proprio.paye(prix, true);
+			this.nombreMaison += nombre;
+			
+			// Si a atteint les 5 maisons, la propriété passe à l'état IBIS (hôtel)
+			if(this.nombreMaison == 5) {
+				EtatIbis ei = new EtatIbis(this);
+				this.majEtat(ei);
+			}
+			return true;
 		}
-	}
-	
+		else {
+			System.out.println("Vous n'avez pas assez d'argent pour ajouter une maison sur cette propriété.");
+			return false;
+		}
+				
+		
+		
+	}	
 	
 	public int donneLoyerConstructible() {
 		switch(this.nombreMaison) {

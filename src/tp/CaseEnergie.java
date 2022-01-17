@@ -33,9 +33,9 @@ public class CaseEnergie extends CaseAchetable {
 		}
 	}
 	
-	private int calculPrixAPayer(int des, int nombre) {
+	public int calculPrixAPayer(int des, int nombre) {
 		int multiplicateur = (nombre == 1 ? 4 : 10);
 		
-		return 150 * multiplicateur * des;
+		return /*150 * */multiplicateur * des;
 	}
 }

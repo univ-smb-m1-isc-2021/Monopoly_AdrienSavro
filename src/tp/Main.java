@@ -52,7 +52,7 @@ public class Main {
 		
 		
 		 
-		f.refreshFrame();
+		//f.refreshFrame();
 		     
        
         

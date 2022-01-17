@@ -172,10 +172,10 @@ public class Joueur {
 			
 			if (nb > 0) {
 				
-				CasePropriete choix = mesTerrainsConstructibles.get(nb);
-				choix.ajouterMaison(1);
+				CasePropriete choix = mesTerrainsConstructibles.get(nb - 1);
+				boolean estAjoute = choix.ajouterMaison(1);
 				
-				System.out.println("Vous avez ajouté " + 1 + " maison sur '" + choix.nom + "'");
+				if (estAjoute) System.out.println("Vous avez ajouté " + 1 + " maison sur '" + choix.nom + "'");
 
 			}
 			

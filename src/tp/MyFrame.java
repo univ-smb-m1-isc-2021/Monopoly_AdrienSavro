@@ -26,7 +26,7 @@ public class MyFrame extends JFrame{
 
 	
 	
-	public void refreshFrame() {
+	/*public void refreshFrame() {
 		
 		this.mainPanel.removeAll();
 		
@@ -103,7 +103,7 @@ public class MyFrame extends JFrame{
         this.add(mainPanel);
         this.setSize(1000, 1000);  
 		this.setVisible(true);
-	}
+	}*/
 	
 	
 	public String nomEtat(EtatPropriete etat) {

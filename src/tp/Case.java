@@ -37,6 +37,10 @@ public abstract class Case {
 	public Case getCaseSuivante() {
 		return caseSuivante;
 	}
+	
+	public String getNom() {
+		return this.nom;
+	}
 
 
 	public void setCaseSuivante(Case caseSuivante) {
