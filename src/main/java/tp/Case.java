@@ -22,7 +22,7 @@ public abstract class Case {
 		Case actuel = this;
 		for(int i = 1; i <= nombreDes; i++) {
 			actuel = actuel.caseSuivante;
-			if (actuel.nom == "Départ") {
+			if (actuel.nom.equals("Départ")) {
 				return true;
 			}
 		}
